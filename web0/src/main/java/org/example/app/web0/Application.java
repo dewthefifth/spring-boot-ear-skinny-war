@@ -8,8 +8,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "org.example.app.web0.config")
-@EnableAutoConfiguration
+@ComponentScan
+@EnableAutoConfiguration(exclude = {
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer
 {
     public static void main(String[] args) {
