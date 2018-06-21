@@ -7,7 +7,7 @@
 		<exclude-subsystems>
 			<subsystem name="jaxrs" />
 			<subsystem name="resteasy" />
-			<subsystem name="jpa" />
+			<!-- <subsystem name="jpa" /> -->
 		</exclude-subsystems>
 		<exclusions>
 			<module name="com.fasterxml.jackson.core.jackson-annotations" />
@@ -21,10 +21,22 @@
 			<module name="org.apache.xalan" />
 			<module name="org.apache.xerces" />
 
+			<module name="org.jboss.logging" />
+			
+			<module name="org.hibernate" />
+			
+			<!-- 
 			<module name="javaee.api" />
 
 			<module name="javax.faces.api"/>
 			<module name="javax.validation.api"/>
-		</exclusions>
+			
+			 -->
+		</exclusions>	
+		<!-- 	
+		<dependencies>
+			<module name="org.hibernate.validator" export="true" meta-inf="export"/>
+		</dependencies>
+		 -->
 	</deployment>
 </jboss-deployment-structure>

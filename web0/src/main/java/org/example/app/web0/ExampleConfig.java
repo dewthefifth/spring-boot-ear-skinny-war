@@ -1,4 +1,4 @@
-package org.example.app.web0.config;
+package org.example.app.web0;
 
 import org.springframework.context.annotation.Configuration;
 
