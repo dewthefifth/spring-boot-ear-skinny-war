@@ -19,7 +19,7 @@
 
         <versions.spring.boot>2.0.2.RELEASE</versions.spring.boot>
         <versions.com.fasterxml>2.9.5</versions.com.fasterxml>
-        <versions.spring.boot.legacy>2.0.0</versions.spring.boot.legacy>
+        <versions.spring.boot.legacy>2.0.0.RELEASE</versions.spring.boot.legacy>
     </properties>
 
     <modules>
