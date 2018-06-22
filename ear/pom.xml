@@ -24,13 +24,6 @@
 
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>spring-boot-web2</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.example</groupId>
             <artifactId>spring-boot-web1</artifactId>
             <version>${project.version}</version>
             <type>pom</type>
@@ -40,6 +33,13 @@
                     <artifactId>servlet-container-initializer-meta-inf</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>spring-boot-web2</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
         </dependency>
 
         <dependency>
