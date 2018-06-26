@@ -87,7 +87,7 @@
 			<module name="javax.xml.ws.api" export="true"/>
 
 			<!-- This one always goes last. -->
-			<!-- <module name="javax.api" export="true"/> -->
+			<module name="deployment.spring-boot-platform-${project.version}.ear" export="true" meta-inf="export" />
 		</dependencies>
 	</deployment>
 </jboss-deployment-structure>

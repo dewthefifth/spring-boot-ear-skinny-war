@@ -1,14 +1,19 @@
 package org.example.app.skinnywar.controller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-public class ExampleController {
+public class ExampleController
+{
 
-    @RequestMapping("/")
-    public String index() {
-        return "Skinny Web Application";
-    }
+	@Value("${welcome.message}")
+	private String welcomeMessage;
 
+	@GetMapping("/")
+	public String index()
+	{
+		return welcomeMessage;
+	}
 }

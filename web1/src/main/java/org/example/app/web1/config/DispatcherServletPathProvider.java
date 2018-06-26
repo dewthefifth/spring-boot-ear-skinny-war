@@ -1,4 +1,4 @@
-package org.example.app.web0;
+package org.example.app.web1.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,10 +9,10 @@ public class DispatcherServletPathProvider implements org.springframework.boot.a
 
 	@Value("${server.servlet.context-path}")
 	private String servletContextPath;
-	
+
 	@Override
 	public String getServletPath()
-	{		
+	{
 		return servletContextPath;
 	}
 

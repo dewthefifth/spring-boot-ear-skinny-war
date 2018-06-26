@@ -7,6 +7,7 @@
 		<exclude-subsystems>
 			<subsystem name="jaxrs" />
 			<subsystem name="resteasy" />
+			<subsystem name="jpa" />
 		</exclude-subsystems>
 		<exclusions>
 			<module name="com.fasterxml.jackson.core.jackson-annotations" />
@@ -24,5 +25,9 @@
 			<module name="org.apache.xalan" />
 			<module name="org.apache.xerces" />
 		</exclusions>
+		<!-- This allows you to define additional dependencies, it is the same as using the Dependencies: manifest attribute -->
+		<dependencies>
+			<module name="deployment.spring-boot-platform-${project.version}.ear" export="true" meta-inf="export" />
+		</dependencies>
 	</deployment>
 </jboss-deployment-structure>

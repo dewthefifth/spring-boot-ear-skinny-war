@@ -52,6 +52,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -102,6 +103,7 @@
 					<version>7</version>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>
