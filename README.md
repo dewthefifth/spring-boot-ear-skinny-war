@@ -73,6 +73,14 @@ Functional
 
 It's not actually clear why this portion functions without server modifications while the other sections do not. However, it does...
 
+## JBOSS EAP 6.4 (modified)
+### Scenario 1
+Functional
+### Scenario 2
+Functional
+### Scenario 3
+Functional
+
 ## JBOSS EAP 7.0
 ### Scenario 1
 Functional
