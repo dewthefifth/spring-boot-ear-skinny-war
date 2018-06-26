@@ -106,31 +106,20 @@
 
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
-
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<packagingExcludes>${classpath}</packagingExcludes>
-					<webResources>
-						<resource>
-							<directory>src/main/webapp</directory>
-							<filtering>true</filtering>
-						</resource>
-						<resource>
-							<directory>src/main/webapp/WEB-INF/${jboss.target}</directory>
-							<targetPath>WEB-INF</targetPath>
-							<filtering>true</filtering>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
 				<version>1.0.0</version>
 				<executions>
+					<!-- ******************************* -->
+					<!-- Load Platform Classpath: ****** -->
+					<!-- The platform project will generate a file called ear.excludes.properties which contains -->
+					<!-- classpath=${comma-seperated-list-of-every-included-jar} which we use this plugin to read -->
+					<!-- into our project properties (as the property "classpath"). We can then use that property -->
+					<!-- during our ear build process as the excludes value, effectively making sure that none of -->
+					<!-- the jar files included in the platform are packaged in this (skinny) ear -->
+					<!-- ******************************* -->
 					<execution>
 						<phase>initialize</phase>
 						<goals>
@@ -144,6 +133,61 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<!-- Important link to the properties plugin above, this is -->
+					<!-- the magic configuration that actually makes the ear skinny -->
+					<packagingExcludes>${classpath}</packagingExcludes>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp</directory>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+					</resource>
+					<resource>
+						<directory>src/main/webapp/default</directory>
+						<targetPath>${project.build.directory}/${project.build.finalName}</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>jboss-eap-6.4</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+					</resource>
+					<resource>
+						<directory>src/main/webapp/jboss-eap-6.4</directory>
+						<targetPath>${project.build.directory}/${project.build.finalName}</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

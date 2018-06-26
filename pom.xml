@@ -20,8 +20,6 @@
 		<compiler.source>1.8</compiler.source>
 		<compiler.target>1.8</compiler.target>
 
-		<jboss.target>jboss-eap-6.4</jboss.target>
-
 		<versions.com.fasterxml>2.9.5</versions.com.fasterxml>
 		<versions.spring.boot.legacy>2.0.0.RELEASE</versions.spring.boot.legacy>
 		<versions.springfox>2.7.0</versions.springfox>

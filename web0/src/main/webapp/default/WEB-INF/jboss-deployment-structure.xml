@@ -7,7 +7,6 @@
 		<exclude-subsystems>
 			<subsystem name="jaxrs" />
 			<subsystem name="resteasy" />
-			<subsystem name="jpa" />
 		</exclude-subsystems>
 		<exclusions>
 			<module name="com.fasterxml.jackson.core.jackson-annotations" />

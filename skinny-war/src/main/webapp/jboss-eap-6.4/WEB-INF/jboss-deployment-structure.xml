@@ -35,15 +35,24 @@
 			<module name="javax.validation.api"/>
 			
 			<module name="org.hibernate" />
+			<module name="org.hibernate.search.engine" />
+			<module name="org.hibernate.search.orm" />
 			<module name="org.hibernate.validator" />
 			
 			<module name="org.jboss.as.connector" />
 			<module name="org.jboss.as.ee" />
+			<module name="org.jboss.as.ejb3" />
 			<module name="org.jboss.as.jpa" />
+			<module name="org.jboss.as.jpa.hibernate" />
+			<module name="org.jboss.as.jpa.spi" />
+			<module name="org.jboss.as.jpa.util" />
+
+			<module name="org.jboss.as.osgi.jpa" />
 			
 			<module name="org.jboss.ironjacamar.impl" />
 			<module name="org.jboss.ironjacamar.jdbcadapters" />
 
+			<module name="org.jboss.weld" />
 			<module name="org.jboss.weld.core" />
 			<module name="org.jboss.weld.spi" />			
 		</exclusions>
@@ -70,7 +79,7 @@
 			<module name="javax.servlet.api" export="true"/>
 			<module name="javax.servlet.jsp.api" export="true"/>
 			<module name="javax.transaction.api" export="true"/>
-			<!--<module name="javax.validation.api" export="false"/> -->
+			<!-- <module name="javax.validation.api" export="true"/> -->
 			<module name="javax.ws.rs.api" export="true"  services="export"/>
 			<module name="javax.xml.bind.api" export="true"/>
 			<module name="javax.xml.registry.api" export="true"/>
@@ -78,7 +87,7 @@
 			<module name="javax.xml.ws.api" export="true"/>
 
 			<!-- This one always goes last. -->
-			<!-- <module name="javax.api" export="true"/> -->
+			<module name="deployment.spring-boot-platform-@project.version@.ear" export="true" meta-inf="export"/>
 		</dependencies>
 	</deployment>
 </jboss-deployment-structure>

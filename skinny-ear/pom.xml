@@ -64,36 +64,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<!-- ****************** -->
-					<!-- Copy Files: ****** -->
-					<!-- This will copy the contents of our ${jboss.target} META-INF into the actual META-INF root -->
-					<!-- ****************** -->
-					<execution>
-						<id>copy-resources</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<!-- Something, somewhere uses @ as the default delimiter, but we want to use ${*} like everywhere else -->
-							<delimiters>
-								<delimiter>${*}</delimiter>
-							</delimiters>
-							<outputDirectory>${project.build.directory}/${project.build.finalName}/META-INF</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${basedir}/src/main/application/META-INF/${jboss.target}</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
 				<version>1.0.0</version>
@@ -101,9 +71,9 @@
 					<!-- ******************************* -->
 					<!-- Load Platform Classpath: ****** -->
 					<!-- The platform project will generate a file called ear.excludes.properties which contains -->
-					<!-- classpath=${comma-seperated-list-of-every-included-jar} which we use this plugin to read-->
-					<!-- into our project properties (as the property "classpath"). We can then use that property-->
-					<!-- during our ear build process as the excludes value, effectively making sure that none of-->
+					<!-- classpath=${comma-seperated-list-of-every-included-jar} which we use this plugin to read -->
+					<!-- into our project properties (as the property "classpath"). We can then use that property -->
+					<!-- during our ear build process as the excludes value, effectively making sure that none of -->
 					<!-- the jar files included in the platform are packaged in this (skinny) ear -->
 					<!-- ******************************* -->
 					<execution>
@@ -148,4 +118,36 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/src/main/application/default</directory>
+						<targetPath>${project.build.directory}/${project.build.finalName}</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>jboss-eap-6.4</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/src/main/application/jboss-eap-6.4</directory>
+						<targetPath>${project.build.directory}/${project.build.finalName}</targetPath>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
 </project>
