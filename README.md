@@ -1,4 +1,4 @@
-# Spring Boot EAR with Skinny WARs
+# Overview: Spring Boot EAR with Skinny WARs
 
 An example project showing the problems deploying Spring Boot applications to JBOSS/Wildfly in an EAR deployment using skinny WARs.
 
@@ -7,8 +7,11 @@ This project consist of several deployment scenarios, being tested against sever
 
 ## Tested Servers
 - JBOSS EAP 6.4
+- JBOSS EAP 7.0
+- JBOSS EAP 7.1
 - Wildfy 8.2.1.Final
 - Wildfly 10.0.0.Final
+- Wildfly 12.0.0.Final
 
 
 ## Scenarios
@@ -28,6 +31,18 @@ Finally, a standalone WAR called `skinny-war` and using the context `/skinny-web
 
 ### Scenario 3: Fat WAR deployment
 A single WAR, identified as `web0`, which should deploy normally on the application server, is included to function as the control case.
+
+# Building Specific Deployments
+
+## JBOSS EAP 6.4
+To build artifacts intended for JBOSS EAP 6.4 run ```mvn clean install "-Djboss.target=jboss-eap-6.4"``` or ```mvn clean install``` as "jboss-eap-6.4" is the default value of "jboss.target"
+
+## Wildfly 8.2.1.Final
+To build artifacts intended for JBOSS EAP 6.4 run ```mvn clean install "-Djboss.target=wildfly-8.2.1.Final"```
+
+## Wildfly 10.0.0.Final
+To build artifacts intended for JBOSS EAP 6.4 run ```mvn clean install "-Djboss.target=wildfly-10.0.0.Final"```
+
 
 # Status
 ## JBOSS EAP 6.4
@@ -91,6 +106,26 @@ Untested
 ### Scenario 3
 Functional
 
+## JBOSS EAP 7.0
+### Scenario 1
+Functional
+### Scenario 2
+Functional
+### Scenario 3
+Functional
+### Additional Notes
+The skinny-war module will fail to deploy when deploying everything at once during JBOSS startup. However, deploying it after the startup will succeed. It appears to have something to do with the JMX module registration, and can likely be corrected by disabling JMX in the application.properties
+
+## JBOSS EAP 7.1
+### Scenario 1
+Functional
+### Scenario 2
+Functional
+### Scenario 3
+Functional
+### Additional Notes
+The regular, non-skinny/platform, EAR module will fail to deploy when deploying everything at once during JBOSS startup. However, deploying it after the startup will succeed. It appears to have something to do with the JMX module registration, and can likely be corrected by disabling JMX in the application.properties
+
 ## Wildfly 8.2.1.Final
 ### Scenario 1
 Functional
@@ -101,11 +136,19 @@ Functional
 
 ## Wildfly 10.0.0.Final
 ### Scenario 1
-Untested
+Functional
 ### Scenario 2
-Untested
+Functional
 ### Scenario 3
-Untested
+Functional
+
+## Wildfly 12.0.0.Final
+### Scenario 1
+Functional
+### Scenario 2
+Functional
+### Scenario 3
+Functional
 
 # Misc. Resolved Problems
 
